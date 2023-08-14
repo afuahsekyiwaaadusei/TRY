@@ -13,38 +13,36 @@
 
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	int fd , len = 0;
-	ssize_t nread;
-	size_t num;
+        int fd , len = 0;
+        ssize_t nread;
+        size_t num;
+	char *bad;
 
-	if(*lineptr == NULL)
+        if(*lineptr == NULL)
+        {
+
+                (*n) = 6;
+                *lineptr = malloc(sizeof(char *) * (*n));
+        }
+        fd = fileno(stream);
+        nread = read(fd, *lineptr, *n);
+	while (len <= 6)
 	{
-		*n = 3;
-		*lineptr = malloc(sizeof(char *) * ((*n) + 1));
-	}
-	fd = fileno(stream);
-	nread = read(fd, *lineptr, *n);
-	/**lineptr[nread] = '\0';*/
-	while (*lineptr[len])
-	{
-		printf("%d:%d\n", len, *lineptr[len]);
+		printf("%d:%p:%c\n", len , *(lineptr + len),  **(lineptr + 1));
 		len++;
 	}
-
-	/*while(*lineptr[(nread + len) - 1] != '\n')
+	/*(lineptr + (nread - 1)) = '\0';
+	while (len)
 	{
-		printf("%c\n", *lineptr[(nread + len) - 1]);
-		*n += 3;
-		len += nread;
-		*lineptr = realloc(*lineptr, *n);
-		nread = read(fd, *lineptr + nread, ((*n) - nread));
-	}
-	len += nread;*/
-	if (nread == 0)
-	{
-		nread = -1;
-		return (nread);
-	}
-	return (nread);
+		 bad = *(lineptr);
+		 printf("%d: %s\n", len, bad);
+		len--;
+	}*/
+        if (nread == 0)
+        {
+                nread = -1;
+                return (nread);
+        }
+        return (nread);
 
 }
