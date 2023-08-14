@@ -26,12 +26,13 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
         }
         fd = fileno(stream);
         nread = read(fd, *lineptr, *n);
-	printf("%ld:%d",nread, *lineptr[1]);
-        if (nread == 0)
-        {
-                nread = -1;
-                return (nread);
-        }
+	(*lineptr)[nread] = '\0';
+	
+	while (((*lineptr)[len]) != '\n')
+	{
+		printf("%ld:%d\n",nread, (*lineptr)[len]);
+		len++;
+	}
         return (nread);
 
 }

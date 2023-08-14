@@ -14,8 +14,8 @@ int main(void)
 	size_t n;
 	ssize_t nread;
 
-	n = 0;
-	line = NULL;
+	n = 6;
+	line = malloc(sizeof(char *) * n);
 	nread = _getline(&line, &n, stdin);
 	printf("My function results %ld: %s", nread, line);
 	nread = getline(&line, &n, stdin);
