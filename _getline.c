@@ -28,7 +28,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
         nread = read(fd, *lineptr, *n);
 	(*lineptr)[nread] = '\0';
 	
-	while (((*lineptr)[len]) != '\n')
+	while (((*lineptr)[nread - 1]) != '\n')
 	{
 		printf("%ld:%d\n",nread, (*lineptr)[len]);
 		len++;
