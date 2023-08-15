@@ -14,11 +14,11 @@ int main(void)
 	size_t n;
 	ssize_t nread;
 
-	n = 6;
-	line = malloc(sizeof(char *) * n);
+	n = 0;
+	line = NULL;
 	nread = _getline(&line, &n, stdin);
-	printf("My function results %ld: %s", nread, line);
+	printf("My function results %ld: %s: %ld", nread, line, n);
 	nread = getline(&line, &n, stdin);
-	printf("Original function results %ld: %s", nread, line);
+	printf("Original function results %ld: %s : %ld", nread, line, n);
 	return (0);
 }

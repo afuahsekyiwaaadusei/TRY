@@ -25,6 +25,10 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
         }
         fd = fileno(stream);
         nread = read(fd, *lineptr, *n);
+	if (nread == -1 || nread == 0)
+	{
+		return (-1);
+	}
 	(*lineptr)[nread] = '\0';
 	
 	while (((*lineptr)[(nread + len) - 1]) != '\n')
@@ -33,9 +37,8 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		*lineptr = realloc(*lineptr, (sizeof(char *) * (*n)));
 		len += nread;
 		nread = read (fd, *lineptr + len, ((*n) - len));
-		if (nread == -1)
+		if (nread == 0 || nread == -1)
 		{
-			perror("nread:");
 			return (-1);
 		}
 		(*lineptr)[nread + len] = '\0';
