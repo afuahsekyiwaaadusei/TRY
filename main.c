@@ -10,15 +10,38 @@
 
 int main(void)
 {
-	char *line;
-	size_t n;
-	ssize_t nread;
+	char str[] = "HELLO WORLD !";
+	char **buf;
+	int i = 0;
 
-	n = 0;
-	line = NULL;
-	nread = _getline(&line, &n, stdin);
-	printf("My function results %ld: %s: %ld", nread, line, n);
-	nread = getline(&line, &n, stdin);
-	printf("Original function results %ld: %s : %ld", nread, line, n);
+	buf = _split(str);
+	while (buf[i])
+	{
+		printf("%s\n", buf[i]);
+		i++;
+	}
 	return (0);
 }
+
+
+
+
+
+/**
+ * main - testing _getline function;
+ */
+
+/*int main(void)
+{
+        char *line;
+        size_t n;
+        ssize_t nread;
+
+        n = 0;
+        line = NULL;
+        nread = _getline(&line, &n, stdin);
+        printf("My function results %ld: %s: %ld", nread, line, n);
+        nread = getline(&line, &n, stdin);
+        printf("Original function results %ld: %s : %ld", nread, line, n);
+        return (0);
+}*/
