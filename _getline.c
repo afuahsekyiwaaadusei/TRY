@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 
 /**
  *_getline - a function that works like getline().
@@ -15,24 +16,30 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
         int fd , len = 0;
         ssize_t nread;
-        size_t num;
-	char *bad;
 
         if(*lineptr == NULL)
         {
 
-                (*n) = 6;
+                (*n) = 120;
                 *lineptr = malloc(sizeof(char *) * (*n));
         }
         fd = fileno(stream);
         nread = read(fd, *lineptr, *n);
 	(*lineptr)[nread] = '\0';
 	
-	while (((*lineptr)[nread - 1]) != '\n')
+	while (((*lineptr)[(nread + len) - 1]) != '\n')
 	{
-		printf("%ld:%d\n",nread, (*lineptr)[len]);
-		len++;
+		*n += 120;
+		*lineptr = realloc(*lineptr, (sizeof(char *) * (*n)));
+		len += nread;
+		nread = read (fd, *lineptr + len, ((*n) - len));
+		if (nread == -1)
+		{
+			perror("nread:");
+			return (-1);
+		}
+		(*lineptr)[nread + len] = '\0';
 	}
-        return (nread);
+        return (nread + len);
 
 }
