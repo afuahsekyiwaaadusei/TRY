@@ -16,12 +16,12 @@ char **_split( char *str)
 	int i = 0;
 	
 
-	token = strtok(str, " ");
+	token = strtok(str, ",.;");
 
 	while (token)
 	{
 		buf[i] = token;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, ",.;");
 		i++;
 	}
 	buf[i] = token;

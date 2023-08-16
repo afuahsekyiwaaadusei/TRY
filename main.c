@@ -10,7 +10,24 @@
 
 int main(void)
 {
-	char str[] = "HELLO WORLD !";
+        char str[] = "HELLO, W.ORLD; !";
+        char *buf;
+        int i = 0;
+
+        buf = _strtok(str, " ");
+	printf("%s\n", buf);
+        return (0);
+}
+
+
+
+/**
+ * main - program to test split.c function.
+ */
+
+/*int main(void)
+{
+	char str[] = "HELLO, W.ORLD; !";
 	char **buf;
 	int i = 0;
 
@@ -21,7 +38,7 @@ int main(void)
 		i++;
 	}
 	return (0);
-}
+}*/
 
 
 
