@@ -1,31 +1,39 @@
 #include "main.h"
-#include <stdio.h>
 
 
 /**
  * _strtok - a function that extract tokens from strings.
  * @str: string to be tokenized.
  * @delim: delimiting byte.
- * 
+ *
  * Return: return a pointer to the next token, or NULL if there are no more tokens.
  */
 
 char *_strtok(char *str, const char *delim)
 {
-	static char *token = NULL, *start = NULL;
+	char *token = NULL;
+	static char *start = NULL;
 	int i = 0, j = 0, flag = 0;
 
 	if (str == NULL)
-		token  = start;
-	else 
+	{
+		if (start)
+			token  = start;
+		else
+			return (token);
+	}
+	else
 		token = str;
 	while (token[i])
 	{
+		j = 0;
+		flag = 0;
 		while (delim[j])
 		{
 			if (token[i] == delim[j])
 			{
 				flag = 1;
+				token++;
 				break;
 			}
 			j++;
