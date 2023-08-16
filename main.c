@@ -10,12 +10,16 @@
 
 int main(void)
 {
-        char str[] = "HELLO, W.ORLD; !";
+        char str[] = "aaa;;bbb,";
         char *buf;
         int i = 0;
 
-        buf = _strtok(str, " ");
-	printf("%s\n", buf);
+        buf = _strtok(str, ";,");
+	while (buf)
+	{
+		printf("%s\n", buf);
+		buf = _strtok(NULL, " ");
+	}
         return (0);
 }
 
