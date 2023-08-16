@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 
 /**
@@ -12,7 +13,7 @@
 char *_strtok(char *str, const char *delim)
 {
 	static char *token = NULL, *start = NULL;
-	int i = 0, j = 0, flag = 0, x = 0;
+	int i = 0, j = 0, flag = 0;
 
 	if (str == NULL)
 		token  = start;
@@ -29,7 +30,7 @@ char *_strtok(char *str, const char *delim)
 			}
 			j++;
 		}
-		while (!flag)
+		if (!flag)
 		{
 			while (token[i])
 			{
@@ -46,8 +47,7 @@ char *_strtok(char *str, const char *delim)
 				}
 				i++;
 			}
-			if (token[i] == '\0')
-			token = NULL;
+			start = NULL;
 			return (token);
 		}
 		i++;
