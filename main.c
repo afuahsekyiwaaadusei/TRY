@@ -10,16 +10,19 @@
 
 int main(void)
 {
-        char str[] = "aaa;;bbb,";
+        char str[] = ";;,";
         char *buf;
         int i = 0;
 
         buf = _strtok(str, ";,");
-	while (buf)
+/*	while (buf)
 	{
 		printf("%s\n", buf);
 		buf = _strtok(NULL, " ");
-	}
+	}*/
+	printf("1%s\n", buf);
+	buf = _strtok(NULL, " ");
+	printf("after %s\n", buf);
         return (0);
 }
 
