@@ -8,23 +8,37 @@
  *Return: always zero.
  */
 
+
+
 int main(void)
+{
+	char *value = _getenv("LANG");
+
+	if (value)
+		printf("%s\n", value);
+	else 
+		printf("NULL\n");
+	return (0);
+}
+
+
+/*int main(void)
 {
         char str[] = ";;,";
         char *buf;
         int i = 0;
 
         buf = _strtok(str, ";,");
-/*	while (buf)
+	while (buf)
 	{
 		printf("%s\n", buf);
 		buf = _strtok(NULL, " ");
-	}*/
+	}
 	printf("1%s\n", buf);
 	buf = _strtok(NULL, " ");
 	printf("after %s\n", buf);
         return (0);
-}
+}*/
 
 
 
