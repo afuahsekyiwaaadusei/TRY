@@ -8,9 +8,14 @@
  *Return: always zero.
  */
 
-
-
 int main(void)
+{
+	path();
+	return (0);
+}
+
+
+/*int main(void)
 {
 	char *value = _getenv("LANG");
 
@@ -19,7 +24,7 @@ int main(void)
 	else 
 		printf("NULL\n");
 	return (0);
-}
+}*/
 
 
 /*int main(void)
