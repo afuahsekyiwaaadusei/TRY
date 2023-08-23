@@ -4,6 +4,28 @@
 
 int main(void)
 {
+	char *env = getenv("HOME");
+       	printf("%s\n", env);
+	int flag = setenv("HOME", "/roooooooooooooooooot", 1);
+       	if (flag >= 0)
+	{
+		env = getenv("HOME");
+		printf("%s\n", env);
+		env = getenv("LANG");
+		printf("%s\n", env);
+	}
+	return 0;
+}
+
+
+
+
+
+
+
+
+/*int main(void)
+{
 	ssize_t nread;
 	size_t n = 3;
 	char *buf = malloc(sizeof(char *) * n);
@@ -15,4 +37,4 @@ int main(void)
 		i++;
 	}
 	return (0);
-}
+}*/
