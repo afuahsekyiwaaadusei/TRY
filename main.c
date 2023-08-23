@@ -8,11 +8,30 @@
  *Return: always zero.
  */
 
-int main(void)
+
+void printList(node *head) {
+    node *current = head;
+
+
+    while (current != NULL) {
+        printf("%s\n", current->data);
+       	current = current->next;
+    }
+
+}
+int main() {
+    node *path_list = list();
+    
+    printList(path_list);   
+    return 0;
+}
+
+
+/*int main(void)
 {
 	path();
 	return (0);
-}
+}*/
 
 
 /*int main(void)

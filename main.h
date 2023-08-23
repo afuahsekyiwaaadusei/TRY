@@ -7,4 +7,9 @@ char *_strtok(char *str, const char *delim);
 extern char **environ;
 char *_getenv(const char *name);
 int path();
+typedef struct node {
+	char data[120];
+	struct node *next;
+} node;
+node *list(void);
 #endif
